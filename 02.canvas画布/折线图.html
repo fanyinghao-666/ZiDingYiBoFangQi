@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="500" style="border: 3px solid #cccc"></canvas>
+    <script>
+        var c = document.getElementById("canvas");
+        var cxt = c.getContext("2d")
+        var data = {
+            x: ["11月", "12月", "1月", "2月", "3月"],
+            y: ["300", "刘亚露", "200", "150", "100", "50", "0"],
+            info:"万元/m²",
+            line: [{
+                    color: "blue",
+                    da: [98, 151, 180, 240,90]
+                },
+                {
+                    color: "red",
+                    da: [10, 29, 123, 230, 300]
+                },
+                {
+
+                       color:"green",
+                da:[151,20,30,40,200] 
+                }
+            
+            ]
+        }
+        var w = canvas.width;
+        var h = canvas.height
+        var stepy= (h-100)/(data.y.length-1);
+        var stepx=(w-100)/(data.x.length-1);
+
+        var hxs = [50, 50]; //横线开始坐标
+        var hxe = [w - 50, 50];
+
+
+        for (var i = 0; i < data.y.length; i++) {
+            //坐标
+            cxt.fillText(data.y[i],0+10,hxe[1])
+            cxt.moveTo(hxs[0], hxs[1]);
+            cxt.lineTo(hxe[0], hxe[1]);
+            cxt.stroke();
+
+            hxs[1] += stepy;
+            hxe[1] += stepy;
+        }
+        //竖线
+        var sxs=[50,50];
+        var sxe=[50,h-50];
+        for( var j=0;j<data.x.length;j++){
+            cxt.fillText(data.x[j],sxe[0]-10,sxe[1]+20)
+
+            cxt.moveTo(sxs[0], sxs[1]);
+            cxt.lineTo(sxe[0], sxe[1]);
+            cxt.stroke();
+
+            sxs[0] += stepx;
+            sxe[0] += stepx; 
+        }
+        cxt.fillText(data.info,30,50) ;
+        // for(var m=0;m<data..line.length;m++){
+        //    var  da =data.line[m].da ;
+        //    for(var n=0;n<da.length;n++){
+        //        cxt.moveTo(50+stepx*n,h-50-(da[n]/data.y[0])*(h-100));
+        //        cxt.lineTo(50+stepx*(n+1),h-50(da[n+1]/data.y[0])*(h-100));
+        //        cxt.stroke();
+
+        //    }
+        // } 
+        for(var m=0;m<data.line.length;m++){
+            var da = data.line[m].da;
+            for(var n=0;n<da.length;n++){
+                cxt.beginPath();
+                cxt.strokeStyle = data.line[m].color;
+                cxt.moveTo(50+stepx*n,h-50-(da[n]/data.y[0]*(h-100)));
+                cxt.lineTo(50+stepx*(n+1),(h-50-da[n+1]/data.y[0]*(h-100)));
+
+                cxt.stroke();
+                cxt.closePath();
+            }
+        }  
+        //小圆球
+        // cxt.beginPath()
+        // cxt.arc(50+stepx*n,h-50-(da[n]/data.y[0]*(h-10),5,Math.PI*2,true);
+        // cxt.closePath()
+
+    </script>
+</body>
+
+</html>

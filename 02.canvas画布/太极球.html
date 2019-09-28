@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="400" style="border: 2px solid #ccc"></canvas>
+    <script>
+    var c=document.getElementById("canvas");
+    var cxt=c.getContext("2d");
+    //  cxt.moveTo(0,0);
+    //  cxt.lineTo(200,200);
+    //  cxt.strokeStyle="red"
+    //  cxt.stroke();
+    // canvas.onmousedown=function(e){
+    //     var e= e|| window.event;
+    //     cxt.moveTo(e.offsetX,offsetY);
+
+    // }
+     cxt.beginPath()
+    cxt.arc(200,200,100,Math.PI*0.5,Math.PI*1.5,true)
+     cxt.fillStyle="red"
+    cxt.fill()
+    cxt.closePath()
+
+    cxt.beginPath()
+    cxt.arc(200,200,100,Math.PI*0.5,Math.PI*1.5,false)
+    cxt.fillStyle="pink"
+    cxt.fill()
+    cxt.closePath()
+    //小的右边
+    cxt.beginPath()
+    cxt.arc(200,150,50,Math.PI*0.5,Math.PI*1.5,true)
+    cxt.fillStyle="yellow"
+    cxt.fill()
+    cxt.closePath()
+
+    // 小的右边
+    cxt.beginPath()
+    cxt.arc(200,250,50,Math.PI*0.5,Math.PI*1.5,false)
+    cxt.fillStyle="blue"
+    cxt.fill()
+    cxt.closePath()
+    //最小上
+    cxt.beginPath()
+    cxt.arc(200,150,25,0,Math.PI*2,true)
+    cxt.fillStyle="black"
+    cxt.fill()
+    cxt.closePath()
+    //最小下
+    cxt.beginPath()
+    cxt.arc(200,250,25,0,Math.PI*2,false)
+    cxt.fillStyle="green"
+    cxt.fill()
+    cxt.closePath()
+
+
+
+
+
+   
+    
+    
+    </script>
+</body>
+</html>

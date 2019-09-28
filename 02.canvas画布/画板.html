@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="600" style="border: 2px solid #ccc"></canvas>
+    <button id="button">清除</button>
+    <script>
+    var c =document.getElementById("canvas");
+    var button =document.getElementById("button");
+      var cxt=c.getContext("2d")
+    canvas.onmousedown=function(e){
+        var e= e||window.event;
+        cxt.moveTo(e.offsetX,e.offsetY);
+        canvas.onmousemove=function(){
+        var e=e||window.event;
+        cxt.lineTo(e.offsetX,e.offsetY)
+        cxt.stroke() 
+        }
+        canvas.onmouseup=function(){
+            canvas.onmousemove=null
+        }
+    };
+    button.onclick=function(){
+        cxt.clearRect(0,0,canvas.width,canvas.height)
+        // canvas.height=canvas.height
+    }
+
+    
+    
+    </script>
+</body>
+</html>
